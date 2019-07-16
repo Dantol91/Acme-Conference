@@ -25,7 +25,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Access(AccessType.PROPERTY)
 public class Authority implements GrantedAuthority {
 
-	// Constructors -----------------------------------------------------------
+	// Constructors 
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -35,18 +35,19 @@ public class Authority implements GrantedAuthority {
 	}
 
 
-	// Values -----------------------------------------------------------------
-
+	// Values 
 	public static final String	ADMIN		= "ADMIN";
-	public static final String	CUSTOMER	= "CUSTOMER";
+	public static final String	AUTHOR		= "AUTHOR";
+	public static final String	SPONSOR		= "SPONSOR";
+	public static final String	REVIEWER	= "REVIEWER";
 
-	// Attributes -------------------------------------------------------------
+	// Attributes 
 
 	private String				authority;
 
 
 	@NotBlank
-	@Pattern(regexp = "^" + Authority.ADMIN + "|" + Authority.CUSTOMER + "$")
+	@Pattern(regexp = "^" + Authority.ADMIN + "|" + Authority.AUTHOR + "|" + Authority.SPONSOR + "$")
 	@Override
 	public String getAuthority() {
 		return this.authority;
@@ -67,13 +68,21 @@ public class Authority implements GrantedAuthority {
 		result.add(authority);
 
 		authority = new Authority();
-		authority.setAuthority(Authority.CUSTOMER);
+		authority.setAuthority(Authority.AUTHOR);
+		result.add(authority);
+
+		authority = new Authority();
+		authority.setAuthority(Authority.SPONSOR);
+		result.add(authority);
+
+		authority = new Authority();
+		authority.setAuthority(Authority.REVIEWER);
 		result.add(authority);
 
 		return result;
 	}
 
-	// Object interface -------------------------------------------------------
+	// Object interface 
 
 	@Override
 	public int hashCode() {

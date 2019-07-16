@@ -1,7 +1,7 @@
 /*
  * UserAccount.java
  * 
- * Copyright (C) 2018 Universidad de Sevilla
+ * Copyright (C) 2019 Universidad de Sevilla
  * 
  * The use of this project is hereby constrained to the conditions of the
  * TDG Licence, a copy of which you may download from
@@ -32,7 +32,7 @@ import domain.DomainEntity;
 @Access(AccessType.PROPERTY)
 public class UserAccount extends DomainEntity implements UserDetails {
 
-	// Constructors -----------------------------------------------------------
+	// Constructors 
 
 	private static final long	serialVersionUID	= 7254823034213841482L;
 
@@ -44,12 +44,13 @@ public class UserAccount extends DomainEntity implements UserDetails {
 	}
 
 
-	// Attributes -------------------------------------------------------------
-
-	// UserDetails interface --------------------------------------------------
+	// Attributes 
 
 	private String					username;
 	private String					password;
+
+	// UserDetails interface 
+
 	private Collection<Authority>	authorities;
 
 
@@ -109,20 +110,20 @@ public class UserAccount extends DomainEntity implements UserDetails {
 
 	@Transient
 	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Transient
-	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-	@Transient
+	@Override
+	public boolean isAccountNonLocked() {
+
+		return false;
+	}
+
 	@Override
 	public boolean isEnabled() {
-		return true;
+
+		return false;
 	}
 
 }
