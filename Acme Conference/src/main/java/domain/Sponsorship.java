@@ -29,20 +29,6 @@ public class Sponsorship extends DomainEntity {
 	private String		targetURL;
 	private CreditCard	creditCard;
 
-	// Relationships
-
-	private Sponsor		sponsor;
-
-
-	@Valid
-	@ManyToOne(optional = false)
-	public Sponsor getSponsor() {
-		return this.sponsor;
-	}
-
-	public void setSponsor(final Sponsor sponsor) {
-		this.sponsor = sponsor;
-	}
 
 	@URL
 	@NotBlank
@@ -75,6 +61,22 @@ public class Sponsorship extends DomainEntity {
 
 	public void setCreditCard(final CreditCard creditCard) {
 		this.creditCard = creditCard;
+	}
+
+
+	// Relationships
+
+	private Sponsor	sponsor;
+
+
+	@Valid
+	@ManyToOne(optional = false)
+	public Sponsor getSponsor() {
+		return this.sponsor;
+	}
+
+	public void setSponsor(final Sponsor sponsor) {
+		this.sponsor = sponsor;
 	}
 
 }

@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -60,10 +62,12 @@ public class Submission extends DomainEntity {
 	private Author			author;
 	private Presentation	presentation;
 	private Paper			paper;
+	private Paper			paperCameraReady;
 
 
 	@NotBlank
 	@Valid
+	@ManyToOne(optional = false)
 	public Author getAuthor() {
 		return this.author;
 	}
@@ -74,6 +78,7 @@ public class Submission extends DomainEntity {
 
 	@NotBlank
 	@Valid
+	@ManyToOne(optional = false)
 	public Presentation getPresentation() {
 		return this.presentation;
 	}
@@ -82,6 +87,7 @@ public class Submission extends DomainEntity {
 		this.presentation = presentation;
 	}
 
+	@OneToOne(optional = false)
 	@Valid
 	public Paper getPaper() {
 		return this.paper;
@@ -89,6 +95,16 @@ public class Submission extends DomainEntity {
 
 	public void setPaper(final Paper paper) {
 		this.paper = paper;
+	}
+
+	@OneToOne(optional = true)
+	@Valid
+	public Paper getPaperCameraReady() {
+		return this.paperCameraReady;
+	}
+
+	public void setPaperCameraReady(final Paper paperCameraReady) {
+		this.paperCameraReady = paperCameraReady;
 	}
 
 }

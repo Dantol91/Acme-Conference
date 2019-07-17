@@ -70,4 +70,20 @@ public class Category extends DomainEntity {
 		this.parentCategory = parentCategory;
 	}
 
+
+	//Relationships
+
+	private Category	parent;
+
+
+	@Valid
+	@ManyToOne(optional = false)
+	public Category getParent() {
+		return this.parent;
+	}
+
+	public void setParent(final Category parent) {
+		this.parent = parent;
+	}
+
 }

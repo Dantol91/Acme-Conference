@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -40,11 +41,23 @@ public class Registration extends DomainEntity {
 
 	// Relationships
 
-	private Author	author;
-
+	private Author		author;
 
 	@NotBlank
 	@Valid
+	// Relationships
+	private Tutorial	tutorial;
+
+
+	@NotNull
+	@ManyToOne(optional = false)
+	public Tutorial getTutorial() {
+		return this.tutorial;
+	}
+
+	public void setTutorial(final Tutorial tutorial) {
+		this.tutorial = tutorial;
+	}
 	public Author getAuthor() {
 		return this.author;
 	}

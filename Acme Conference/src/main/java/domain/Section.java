@@ -29,20 +29,6 @@ public class Section extends DomainEntity {
 	private String		summary;
 	private List<Url>	pictures;
 
-	// Relationships
-
-	private Tutorial	tutorial;
-
-
-	@NotNull
-	@ManyToOne(optional = false)
-	public Tutorial getTutorial() {
-		return this.tutorial;
-	}
-
-	public void setTutorial(final Tutorial tutorial) {
-		this.tutorial = tutorial;
-	}
 
 	@NotBlank
 	@NotNull
@@ -72,6 +58,22 @@ public class Section extends DomainEntity {
 
 	public void setPictures(final List<Url> pictures) {
 		this.pictures = pictures;
+	}
+
+
+	// Relationships
+
+	private Tutorial	tutorial;
+
+
+	@NotNull
+	@ManyToOne(optional = false)
+	public Tutorial getTutorial() {
+		return this.tutorial;
+	}
+
+	public void setTutorial(final Tutorial tutorial) {
+		this.tutorial = tutorial;
 	}
 
 }

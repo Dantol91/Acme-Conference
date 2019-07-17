@@ -7,6 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -83,10 +85,12 @@ public class Report extends DomainEntity {
 
 
 	// Relationships
+
 	private Reviewer				reviewer;
 	private Collection<Submission>	submissions;
 
 
+	@ManyToOne(optional = false)
 	@NotBlank
 	@Valid
 	public Reviewer getReviewer() {
@@ -97,6 +101,7 @@ public class Report extends DomainEntity {
 		this.reviewer = reviewer;
 	}
 
+	@OneToMany
 	@Valid
 	public Collection<Submission> getSubmissions() {
 		return this.submissions;

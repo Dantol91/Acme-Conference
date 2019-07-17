@@ -33,19 +33,13 @@ public class Finder extends DomainEntity {
 
 	// Attributes 
 
-	private String					keyword;
-	private String					acronym;
-	private String					venue;
-	private String					summary;
-	private Double					maxFee;
-	private Date					start;
-	private Date					end;
-
-	// Relationships
-
-	private Collection<Conference>	conferences;
-	private Category				category;
-	private Actor					actor;
+	private String	keyword;
+	private String	acronym;
+	private String	venue;
+	private String	summary;
+	private Double	maxFee;
+	private Date	start;
+	private Date	end;
 
 
 	public String getKeyword() {
@@ -107,7 +101,13 @@ public class Finder extends DomainEntity {
 		this.maxFee = maxFee;
 	}
 
+
 	// Relationships
+
+	private Collection<Conference>	conferences;
+	private Category				category;
+	private Actor					actor;
+
 
 	@Valid
 	@ManyToOne(optional = true)

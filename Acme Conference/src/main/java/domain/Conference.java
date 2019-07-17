@@ -6,8 +6,9 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -135,9 +136,11 @@ public class Conference extends DomainEntity {
 	private Collection<Registration>	registrations;
 	private Administrator				administrator;
 	private Collection<Comment>			comments;
+	private Category					category;
 
 
-	@ElementCollection
+	@Valid
+	@OneToMany
 	public Collection<Registration> getRegistrations() {
 		return this.registrations;
 	}
@@ -147,6 +150,7 @@ public class Conference extends DomainEntity {
 	}
 
 	@NotBlank
+	@ManyToOne(optional = false)
 	public Administrator getAdministrator() {
 		return this.administrator;
 	}
@@ -155,14 +159,24 @@ public class Conference extends DomainEntity {
 		this.administrator = administrator;
 	}
 
-	@ElementCollection
 	@Valid
+	@OneToMany
 	public Collection<Comment> getComments() {
 		return this.comments;
 	}
 
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@NotBlank
+	@ManyToOne(optional = false)
+	public Category getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(final Category category) {
+		this.category = category;
 	}
 
 }

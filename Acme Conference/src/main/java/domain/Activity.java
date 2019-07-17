@@ -8,6 +8,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -94,12 +96,14 @@ public class Activity extends DomainEntity {
 	// Relationships
 
 	private Conference			conference;
-	private Actor				actor;
+	//	private Actor				actor;
 	private Collection<Author>	authors;
+	private Collection<Comment>	comments;
 
 
 	@NotBlank
 	@Valid
+	@ManyToOne(optional = false)
 	public Conference getConference() {
 		return this.conference;
 	}
@@ -108,25 +112,35 @@ public class Activity extends DomainEntity {
 		this.conference = conference;
 	}
 
-	@NotBlank
-	@Valid
-	public Actor getActor() {
-		return this.actor;
-	}
+	//	@NotBlank
+	//	@Valid
+	//	public Actor getActor() {
+	//		return this.actor;
+	//	}
+	//
+	//	public void setActor(final Actor actor) {
+	//		this.actor = actor;
+	//	}
 
-	public void setActor(final Actor actor) {
-		this.actor = actor;
-	}
-
 	@Valid
 	@NotBlank
-	@OneToMany
+	@ManyToMany
 	public Collection<Author> getAuthors() {
 		return this.authors;
 	}
 
 	public void setAuthors(final Collection<Author> authors) {
 		this.authors = authors;
+	}
+
+	@Valid
+	@OneToMany
+	public Collection<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(final Collection<Comment> comments) {
+		this.comments = comments;
 	}
 
 }

@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -62,6 +63,7 @@ public class Paper extends DomainEntity {
 
 	@NotBlank
 	@Valid
+	@ManyToOne(optional = false)
 	public Author getAuthor() {
 		return this.author;
 	}
