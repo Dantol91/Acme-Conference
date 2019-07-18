@@ -25,7 +25,7 @@ public class SponsorService {
 	// Supporting Service
 
 	@Autowired
-	private UserAccountService	uAService;
+	private UserAccountService	userAccountService;
 
 	@Autowired
 	private ServiceUtils		serviceUtils;

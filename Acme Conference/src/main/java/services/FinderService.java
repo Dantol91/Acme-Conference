@@ -35,6 +35,7 @@ public class FinderService {
 	}
 
 	// Simple CRUD methods
+
 	public Finder create() {
 		Finder res;
 		res = new Finder();
