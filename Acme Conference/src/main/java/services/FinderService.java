@@ -18,6 +18,7 @@ import domain.Finder;
 public class FinderService {
 
 	// Managed Repository 
+
 	@Autowired
 	private FinderRepository	finderRepository;
 
@@ -63,13 +64,12 @@ public class FinderService {
 		this.finderRepository.delete(finder);
 	}
 
-	//	public Finder findByActor(final Actor a) {
-	//		Assert.notNull(a);
-	//		Assert.isTrue(a.getId() > 0);
-	//		Assert.notNull(this.actorService.findOne(a).getId()));
-	//		return this.finderRepository.findByActorId(a).getId());
-	//	}
-
+	public Finder findByActorId(final Actor a) {
+		Assert.notNull(a);
+		Assert.isTrue(a.getId() > 0);
+		Assert.notNull(this.actorService.findOne(a.getId()));
+		return this.finderRepository.findByActorId(a.getId());
+	}
 	public Finder findAllByActor(final Actor a) {
 		Assert.notNull(a);
 		Assert.isTrue(a.getId() > 0);

@@ -28,9 +28,9 @@ public class SponsorshipService {
 	@Autowired
 	private TutorialService			tutorialService;
 
+	@Autowired
+	private ServiceUtils			serviceUtils;
 
-	//	@Autowired
-	//	private ServiceUtils			serviceUtils;
 
 	// Simple CRUD methods
 
@@ -58,13 +58,13 @@ public class SponsorshipService {
 
 		return this.sponsorshipRepository.save(s);
 	}
-	//	public void delete(final Sponsorship s) {
-	//		Assert.notNull(s);
-	//		this.serviceUtils.checkAuthority("SPONSOR");
-	//		for (final Tutorial t : this.tutorialService.findTutorialsBySponsorship(s))
-	//			this.tutorialService.save(t);
-	//		this.sponsorshipRepository.delete(s);
-	//	}
+
+	public void delete(final Sponsorship s) {
+		Assert.notNull(s);
+		this.serviceUtils.checkAuthority("SPONSOR");
+
+		this.sponsorshipRepository.delete(s);
+	}
 
 	public Collection<Sponsorship> findBySponsor(final Sponsor sponsor) {
 		Assert.notNull(sponsor);

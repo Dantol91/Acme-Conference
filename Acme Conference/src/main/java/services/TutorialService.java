@@ -20,12 +20,12 @@ public class TutorialService {
 	@Autowired
 	private TutorialRepository	tutorialRepository;
 
-
 	// Supporting Service
 
-	//	@Autowired
-	//	private ServiceUtils serviceUtils;
-	//	
+	@Autowired
+	private ServiceUtils		serviceUtils;
+
+
 	// Simple CRUD methods
 
 	public Tutorial create() {
@@ -50,17 +50,5 @@ public class TutorialService {
 		Assert.notNull(s);
 		this.tutorialRepository.delete(s);
 	}
-
-	//	public Collection<Tutorial> findTutorialsByHandyWorker(final Actor a) {
-	//		Assert.notNull(h);
-	//		Assert.isTrue(h.getId() > 0);
-	//		Assert.notNull(this.tutorialRepository.findTutorialsByHandyWorker(h.getId()));
-	//		return this.tutorialRepository.findTutorialsByHandyWorker(h.getId());
-	//	}
-	//
-	//	public Collection<Tutorial> findTutorialsBySponsorship(final Sponsorship s) {
-	//		final Sponsorship sponsorship = (Sponsorship) this.serviceUtils.checkObject(s);
-	//		return this.tutorialRepository.findTutorialsByHandyWorker(sponsorship.getId());
-	//	}
 
 }
